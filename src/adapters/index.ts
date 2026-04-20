@@ -1,8 +1,9 @@
 import { fetchListing as fdroid } from "./fdroid";
 import { fetchListing as github } from "./github";
+import { fetchListing as izzyondroid } from "./izzyondroid";
 import { AdapterFn } from "./types";
 
-export const adapters: AdapterFn[] = [fdroid, github];
+export const adapters: AdapterFn[] = [fdroid, github, izzyondroid];
 
 export async function queryAll(appId: string) {
   const results = await Promise.allSettled(
@@ -15,4 +16,4 @@ export async function queryAll(appId: string) {
         r.status === "fulfilled" && r.value !== null
     )
     .map((r) => r.value);
-}
+        } 
