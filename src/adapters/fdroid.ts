@@ -9,15 +9,17 @@ export const fetchListing: AdapterFn = async (appId: string) => {
     );
     if (!res.ok) return null;
     const data = await res.json();
+    if (data.error) return null;
 
     const latest = data.packages?.[0];
+    if (!latest) return null;
 
     return {
       source: "fdroid",
       appId,
-      appName: data.name ?? appId,
-      version: latest?.versionName ?? "unknown",
-      lastUpdated: latest?.added ? new Date(latest.added) : null,
+      appName: data.packageName ?? appId,
+      version: latest.versionName ?? "unknown",
+      lastUpdated: null,
       isOpenSource: true,
       trackerCount: 0,
       permissions: [],
