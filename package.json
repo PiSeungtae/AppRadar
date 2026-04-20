@@ -9,7 +9,7 @@
     "dev:web": "vite src/frontend",
     "build": "tsc && vite build src/frontend",
     "test": "vitest run",
-    "lint": "eslint src --ext .ts,.tsx"
+    "lint": "eslint src --ext .ts,.tsx", 
     "search": "tsx src/cli.ts"
   },
   "dependencies": {
